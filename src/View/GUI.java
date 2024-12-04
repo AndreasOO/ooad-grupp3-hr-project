@@ -6,7 +6,6 @@ import java.awt.*;
 
 public class GUI {
     JFrame frame;
-
     JPanel mainPanel;
 
     JPanel topPanel;
@@ -36,11 +35,10 @@ public class GUI {
     JTextField showDetailsPhoneTextField;
 
 
-
-
     public GUI() {
         frame = new JFrame();
         mainPanel = new JPanel();
+
         topPanel = new JPanel();
         searchLabel = new JLabel("Search  ", SwingConstants.RIGHT);
         searchField = new JTextField();
@@ -50,10 +48,11 @@ public class GUI {
         radioButtonID = new JRadioButton("ID");
         filterLabel = new JLabel("Filter      ", SwingConstants.RIGHT);
         filterComboBox = new JComboBox<>(new String[]{"None", "Developer", "Manager", "HR"});
+
         centerPanel = new JPanel();
         searchResultPanel = new JPanel();
-        searchResultTable = new JTable(new String[][]{new String[]{"1", "Jane Doe", "Manager"}},new String[]{"ID", "Name", "Position"}); //TODO WORKS??
-        searchResultScrollPane = new JScrollPane(searchResultTable); // TODO ADD TABLE MODEL HERE
+        searchResultTable = new JTable(new String[][]{new String[]{"1", "Jane Doe", "Manager"}},new String[]{"ID", "Name", "Position"});
+        searchResultScrollPane = new JScrollPane(searchResultTable);
         showDetailsMainPanel = new JPanel();
         showDetailsTopPanel = new JPanel();
         showDetailsButton = new JButton("Show Details");
