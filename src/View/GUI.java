@@ -1,6 +1,7 @@
 package View;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
 public class GUI {
@@ -20,6 +21,7 @@ public class GUI {
 
     JPanel centerPanel;
     JPanel searchResultPanel;
+    JTable searchResultTable;
     JScrollPane searchResultScrollPane;
 
     JPanel showDetailsMainPanel;
@@ -40,27 +42,28 @@ public class GUI {
         frame = new JFrame();
         mainPanel = new JPanel();
         topPanel = new JPanel();
-        searchLabel = new JLabel("Search");
+        searchLabel = new JLabel("Search  ", SwingConstants.RIGHT);
         searchField = new JTextField();
         radioButtonPanel = new JPanel();
         buttonGroup  = new ButtonGroup();
         radioButtonName = new JRadioButton("Name");
         radioButtonID = new JRadioButton("ID");
-        filterLabel = new JLabel("Filter");
-        filterComboBox = new JComboBox<>(new String[]{"Developer", "Manager", "HR"});
+        filterLabel = new JLabel("Filter      ", SwingConstants.RIGHT);
+        filterComboBox = new JComboBox<>(new String[]{"None", "Developer", "Manager", "HR"});
         centerPanel = new JPanel();
         searchResultPanel = new JPanel();
-        searchResultScrollPane = new JScrollPane(); // TODO ADD TABLE MODEL HERE
+        searchResultTable = new JTable(new String[][]{new String[]{"1", "Jane Doe", "Manager"}},new String[]{"ID", "Name", "Position"}); //TODO WORKS??
+        searchResultScrollPane = new JScrollPane(searchResultTable); // TODO ADD TABLE MODEL HERE
         showDetailsMainPanel = new JPanel();
         showDetailsTopPanel = new JPanel();
         showDetailsButton = new JButton("Show Details");
         showDetailsCenterPanel = new JPanel();
-        showDetailsNameTextField = new JTextField("Fake Name");
-        showDetailsEmploymentPercentageTextField = new JTextField("Fake Employment");
-        showDetailsPositionTextField = new JTextField("Fake Position");
-        showDetailsEmailTextField = new JTextField("Fake Email");
-        showDetailsSalaryTextField = new JTextField("Fake Salary");
-        showDetailsPhoneTextField = new JTextField("Fake Phone");
+        showDetailsNameTextField = new JTextField("Jane Doe");
+        showDetailsEmploymentPercentageTextField = new JTextField("100%");
+        showDetailsPositionTextField = new JTextField("Manager");
+        showDetailsEmailTextField = new JTextField("jane@doe.com");
+        showDetailsSalaryTextField = new JTextField("53 000");
+        showDetailsPhoneTextField = new JTextField("09-12 55 12");
     }
 
     public void init() {
@@ -75,6 +78,7 @@ public class GUI {
         mainPanel.add(centerPanel, BorderLayout.CENTER);
 
 
+        radioButtonName.setSelected(true);
         buttonGroup.add(radioButtonName);
         buttonGroup.add(radioButtonID);
         radioButtonPanel.setLayout(new GridLayout(2, 1));
@@ -93,7 +97,10 @@ public class GUI {
         centerPanel.add(showDetailsMainPanel);
 
         searchResultPanel.setLayout(new GridLayout(1,1));
-        searchResultPanel.add(new JButton("Testing size"));
+        searchResultPanel.add(searchResultScrollPane);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        searchResultTable.setDefaultRenderer(Object.class, centerRenderer);
 
 
         showDetailsMainPanel.setLayout(new BorderLayout());
@@ -102,19 +109,19 @@ public class GUI {
         showDetailsTopPanel.add(showDetailsButton, BorderLayout.NORTH);
 
         showDetailsMainPanel.add(showDetailsCenterPanel);
-        showDetailsCenterPanel.setLayout(new GridLayout(2,3));
+        showDetailsCenterPanel.setLayout(new GridLayout(4,3));
+        showDetailsCenterPanel.add(new JLabel("Name"));
+        showDetailsCenterPanel.add(new JLabel("Employment Percentage"));
+        showDetailsCenterPanel.add(new JLabel("Position"));
         showDetailsCenterPanel.add(showDetailsNameTextField);
-
         showDetailsCenterPanel.add(showDetailsEmploymentPercentageTextField);
         showDetailsCenterPanel.add(showDetailsPositionTextField);
+        showDetailsCenterPanel.add(new JLabel("Email"));
+        showDetailsCenterPanel.add(new JLabel("Salary"));
+        showDetailsCenterPanel.add(new JLabel("Phone number"));
         showDetailsCenterPanel.add(showDetailsEmailTextField);
         showDetailsCenterPanel.add(showDetailsSalaryTextField);
         showDetailsCenterPanel.add(showDetailsPhoneTextField);
-
-
-
-
-
 
 
     }
