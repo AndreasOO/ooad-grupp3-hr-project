@@ -39,6 +39,6 @@ public class Employee {
 
    @Override
    public String toString(){
-        return employeeId + " " + name + " tjänar: " + salary;
+        return "EmplymentID : " + employeeId + " " + name + " tjänar: " + salary + " position: " + position;
    }
 }
