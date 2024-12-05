@@ -30,4 +30,21 @@ public class EmployeeDatabase {
         });
 
     }
+    public List<Employee> searchByID(long id) {
+        List<Employee> result = new ArrayList<>();
+        if (Employees.containsKey(id)) {
+            result.add(Employees.get(id));
+        }
+        return result;
+    }
+    public List<Employee> searchByName(String search) {
+        List<Employee> matchingEmployees = new ArrayList<>();
+        for (Employee employee : Employees.values()) {
+            if (employee.getName().trim().equalsIgnoreCase(search.trim())) {
+                matchingEmployees.add(employee);
+            }
+        }
+        return matchingEmployees;
+    }
 }
+
