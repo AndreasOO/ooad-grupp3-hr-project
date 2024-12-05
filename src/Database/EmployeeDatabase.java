@@ -28,8 +28,8 @@ public class EmployeeDatabase {
         employees.forEach(employee -> {
             Employees.put(employee.getEmployeeId(), employee);
         });
-
     }
+
     public List<Employee> searchByID(long id) {
         List<Employee> result = new ArrayList<>();
         if (Employees.containsKey(id)) {
@@ -37,6 +37,7 @@ public class EmployeeDatabase {
         }
         return result;
     }
+
     public List<Employee> searchByName(String search) {
         List<Employee> matchingEmployees = new ArrayList<>();
         for (Employee employee : Employees.values()) {
