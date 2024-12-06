@@ -140,6 +140,8 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         showDetailsCenterPanel.add(showDetailsSalaryTextField);
         showDetailsCenterPanel.add(showDetailsPhoneTextField);
         populateAllEmployees();
+        frame.repaint();
+        frame.revalidate();
     }
 
     public void addEmployeeRow(Employee employee) {
