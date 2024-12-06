@@ -1,10 +1,13 @@
 package View;
 
+import Database.Employee;
 import Model.HRModel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class HRView implements EmployeeDetailsObserver, SearchResultObserver, FilterPositionObserver {
 
@@ -145,11 +148,27 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
 
     @Override
     public void updateSearchResult() {
-
+        List<Employee> getCurrentSearchResult = model.getCurrentSearchResult();
+        for(Employee employee:getCurrentSearchResult){
+            System.out.println("Inne i updatesearchresult!!!!!!!");
+            System.out.println(employee.getName());
+        }
     }
 
     @Override
     public void updateFilterSearch() {
 
+    }
+
+    public JTextField getSearchField() {
+        return searchField;
+    }
+
+    public JRadioButton getRadioButtonName() {
+        return radioButtonName;
+    }
+
+    public JRadioButton getRadioButtonID() {
+        return radioButtonID;
     }
 }
