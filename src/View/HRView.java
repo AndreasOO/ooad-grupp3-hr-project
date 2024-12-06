@@ -175,6 +175,10 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
 
     }
 
+    public void clearTable() {
+        searchResultTableModel.setRowCount(0);
+    }
+
     public JTextField getSearchField() {
         return searchField;
     }

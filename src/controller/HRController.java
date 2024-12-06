@@ -19,6 +19,7 @@ public class HRController {
 
     public void addActionListeners(){
         view.getSearchField().addActionListener(e->{
+            view.clearTable();
             String searchTerm = view.getSearchField().getText();
             if (view.getRadioButtonName().isSelected()){
                 model.setSearchResultByName(searchTerm);
