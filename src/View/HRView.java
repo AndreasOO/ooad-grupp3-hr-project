@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class HRView implements EmployeeDetailsObserver, SearchResultObserver, FilterPositionObserver {
 
@@ -27,6 +28,7 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
     JPanel centerPanel;
     JPanel searchResultPanel;
     JTable searchResultTable;
+    DefaultTableModel searchResultTableModel;
     JScrollPane searchResultScrollPane;
 
     JPanel showDetailsMainPanel;
@@ -42,9 +44,7 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
 
     HRModel model;
 
-
     public HRView(HRModel model) {
-
         this.model = model;
         registerAsObserver();
 
@@ -59,11 +59,17 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         radioButtonName = new JRadioButton("Name");
         radioButtonID = new JRadioButton("ID");
         filterLabel = new JLabel("Filter      ", SwingConstants.RIGHT);
-        filterComboBox = new JComboBox<>(new String[]{"None", "Developer", "Manager", "HR"});
+        filterComboBox = new JComboBox<>(new String[]{"None", "Developer", "Manager", "HR", "Product Owner"});
 
         centerPanel = new JPanel();
         searchResultPanel = new JPanel();
-        searchResultTable = new JTable(new String[][]{new String[]{"1", "Jane Doe", "Manager"}},new String[]{"ID", "Name", "Position"});
+        searchResultTableModel = new DefaultTableModel();
+        searchResultTable = new JTable(searchResultTableModel);
+        searchResultTableModel.addColumn("Name");
+        searchResultTableModel.addColumn("ID");
+        searchResultTableModel.addColumn("Position");
+
+
         searchResultScrollPane = new JScrollPane(searchResultTable);
         showDetailsMainPanel = new JPanel();
         showDetailsTopPanel = new JPanel();
@@ -136,6 +142,10 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
 
     }
 
+    public void addEmployeeRow(Employee employee) {
+        searchResultTableModel.addRow(new String[]{String.valueOf(employee.getEmployeeId()), employee.getName(), employee.getPosition().name()});
+    }
+
     private void registerAsObserver(){
         model.registerDetailsObserver(this);
         model.registerSearchObserver(this);
@@ -150,8 +160,7 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
     public void updateSearchResult() {
         List<Employee> getCurrentSearchResult = model.getCurrentSearchResult();
         for(Employee employee:getCurrentSearchResult){
-            System.out.println("Inne i updatesearchresult!!!!!!!");
-            System.out.println(employee.getName());
+            addEmployeeRow(employee);
         }
     }
 
