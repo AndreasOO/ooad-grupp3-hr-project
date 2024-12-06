@@ -1,10 +1,13 @@
 package View;
 
+import Model.HRModel;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
-public class GUI {
+public class HRView implements EmployeeDetailsObserver, SearchResultObserver, FilterPositionObserver {
+
     JFrame frame;
     JPanel mainPanel;
 
@@ -34,8 +37,14 @@ public class GUI {
     JTextField showDetailsSalaryTextField;
     JTextField showDetailsPhoneTextField;
 
+    HRModel model;
 
-    public GUI() {
+
+    public HRView(HRModel model) {
+
+        this.model = model;
+        registerAsObserver();
+
         frame = new JFrame();
         mainPanel = new JPanel();
 
@@ -122,7 +131,25 @@ public class GUI {
         showDetailsCenterPanel.add(showDetailsSalaryTextField);
         showDetailsCenterPanel.add(showDetailsPhoneTextField);
 
+    }
+
+    private void registerAsObserver(){
+        model.registerDetailsObserver(this);
+        model.registerSearchObserver(this);
+        model.registerPositionSearchObserver(this);
+    }
+
+    @Override
+    public void updateEmployeeDetails() {
+    }
+
+    @Override
+    public void updateSearchResult() {
 
     }
 
+    @Override
+    public void updateFilterSearch() {
+
+    }
 }

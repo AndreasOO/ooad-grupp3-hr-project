@@ -1,8 +1,10 @@
-import View.GUI;
+import Model.HRModel;
+import View.HRView;
+import controller.HRController;
 
 public class Main {
     public static void main(String[] args) {
-        GUI gui = new GUI();
-        gui.init();
+        HRModel model = new HRModel();
+        HRController controller = new HRController(model);
     }
 }
