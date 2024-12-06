@@ -27,8 +27,10 @@ public class Database {
 
     public List<Employee> searchByName(String search) {
         List<Employee> matchingEmployees = new ArrayList<>();
+        String temp = search.toLowerCase();
         for (Employee employee : employees.values()) {
-            if (employee.getName().trim().equalsIgnoreCase(search.trim())) {
+            if (employee.getName().toLowerCase().contains(temp.trim())) {
+
                 matchingEmployees.add(employee);
             }
         }
