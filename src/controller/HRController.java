@@ -19,12 +19,7 @@ public class HRController {
 
     public void addActionListeners(){
         view.getSearchField().addActionListener(e->{
-            System.out.println("We made it here!?");
             String searchTerm = view.getSearchField().getText();
-            if (searchTerm.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Cannot leave text field empty.");
-                return;
-            }
             if (view.getRadioButtonName().isSelected()){
                 model.setSearchResultByName(searchTerm);
             } else if (view.getRadioButtonID().isSelected()) {

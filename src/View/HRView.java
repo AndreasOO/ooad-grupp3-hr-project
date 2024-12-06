@@ -139,7 +139,7 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         showDetailsCenterPanel.add(showDetailsEmailTextField);
         showDetailsCenterPanel.add(showDetailsSalaryTextField);
         showDetailsCenterPanel.add(showDetailsPhoneTextField);
-
+        populateAllEmployees();
     }
 
     public void addEmployeeRow(Employee employee) {
@@ -150,6 +150,10 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         model.registerDetailsObserver(this);
         model.registerSearchObserver(this);
         model.registerPositionSearchObserver(this);
+    }
+
+    private void populateAllEmployees() {
+        model.setSearchResultByName("");
     }
 
     @Override
