@@ -28,6 +28,17 @@ public class HRController {
             }
         });
 
+        view.getShowDetailsButton().addActionListener(e->{
+            int selectedRow = view.getSearchResultTable().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Select an employee to view details");
+                return;
+            }
+            long id = Long.parseLong(view.getSearchResultTable().getValueAt(selectedRow, 0).toString());
+            model.selectEmployee(id);
+            view.updateEmployeeDetails();
+        });
+
     }
 
 
