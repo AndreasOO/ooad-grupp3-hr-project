@@ -94,7 +94,8 @@ public class HRModel {
     public void filterSearchResultByPosition(String position) {
         List<Employee> filteredList = new ArrayList<>();
         if (position.equals("None")) {
-            positionSearchResult = currentSearchResult;
+            positionSearchResult.clear();
+            positionSearchResult.addAll(currentSearchResult);
         } else {
             for (Employee employee : currentSearchResult) {
                 if (employee.getPosition().getPosition().equals(position)) {
