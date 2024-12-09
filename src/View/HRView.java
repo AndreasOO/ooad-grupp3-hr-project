@@ -1,6 +1,7 @@
 package View;
 
 import Database.Employee;
+import Database.Position;
 import Model.HRModel;
 
 import javax.swing.*;
@@ -63,7 +64,7 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         radioButtonEmail = new JRadioButton("Email");
         radioButtonPhone = new JRadioButton("Phone");
         filterLabel = new JLabel("Filter      ", SwingConstants.RIGHT);
-        filterComboBox = new JComboBox<>(new String[]{"None", "Developer", "Manager", "HR", "Product Owner"});
+        fillComboBox();
 
         centerPanel = new JPanel();
         searchResultPanel = new JPanel();
@@ -152,8 +153,20 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         frame.revalidate();
     }
 
+    private void fillComboBox() {
+        int positionsLength = Position.values().length + 1;
+        String[] positionNames = new String[positionsLength];
+        positionNames[0] = "None";
+        int counter = 1;
+        for (Position position : Position.values()) {
+            positionNames[counter] = (position.getPosition());
+            counter++;
+        }
+        filterComboBox = new JComboBox<>(positionNames);
+    }
+
     private void addEmployeeRow(Employee employee) {
-        searchResultTableModel.addRow(new String[]{String.valueOf(employee.getEmployeeId()), employee.getName(), employee.getPosition().name()});
+        searchResultTableModel.addRow(new String[]{String.valueOf(employee.getEmployeeId()), employee.getName(), employee.getPosition().getPosition()});
     }
 
     private void registerAsObserver(){
@@ -191,7 +204,11 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
 
     @Override
     public void updateFilterSearch() {
-
+        clearTable();
+        List<Employee> getFilteredResult = model.getCurrentFilteredSearch();
+        for (Employee employee:getFilteredResult){
+            addEmployeeRow(employee);
+        }
     }
 
     public void clearTable() {
@@ -229,5 +246,9 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
 
     public DefaultTableModel getSearchResultTableModel() {
         return searchResultTableModel;
+    }
+
+    public JComboBox<String> getFilterComboBox() {
+        return filterComboBox;
     }
 }

@@ -91,17 +91,21 @@ public class HRModel {
         notifySearchObservers();
     }
 
-    public void filterSearchResultByPosition(Position position) {
+    public void filterSearchResultByPosition(String position) {
         List<Employee> filteredList = new ArrayList<>();
-        for (Employee employee : currentSearchResult) {
-            if (employee.getPosition().equals(position)) {
-                filteredList.add(employee);
+        if (position.equals("None")) {
+            positionSearchResult = currentSearchResult;
+        } else {
+            for (Employee employee : currentSearchResult) {
+                if (employee.getPosition().getPosition().equals(position)) {
+                    filteredList.add(employee);
+                }
             }
+            positionSearchResult.clear();
+            positionSearchResult.addAll(filteredList);
         }
-        positionSearchResult.addAll(filteredList);
         notifyPositionSearchObservers();
     }
-
     public void selectEmployee(long id) {
         List<Employee> foundEmployees = employeeDatabase.searchByID(id);
         if (foundEmployees != null) {

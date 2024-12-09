@@ -11,7 +11,7 @@ public class LoadData {
     LoadData() {
 
         employees = Arrays.asList(
-                new Employee(203214, "Andreas Ohlander", 85900, Position.PRODUCTOWNER, "andreas.ohlander@help.nu", "0700987654", 100),
+                new Employee(203214, "Andreas Ohlander", 85900, Position.PRODUCT_OWNER, "andreas.ohlander@help.nu", "0700987654", 100),
                 new Employee(1000, "Elsa", 20000, Position.DEVELOPER, "elsa@frost.com", "07384739203", 40),
                 new Employee(2345, "Karen", 20000, Position.SUBORDINATE, "Karen.butter@gmail.com", "07034461562", 100),
                 new Employee(1, "Tommy Olsson", 100, Position.CHEF, "tommyOlsson@help.nu", "0762536472", 80),
