@@ -10,12 +10,15 @@ public class Employee {
     private String phoneNumber;
     private int workingPercentage;
 
-
-    public Employee(long employeeId, String name, double salary, Position position) {
+    public Employee(long employeeId, String name, double salary, Position position, String email, String phoneNumber, int workingPercentage) {
         this.employeeId = employeeId;
         this.name = name;
         this.salary = salary;
         this.position = position;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.workingPercentage = workingPercentage;
+
     }
 
     public long getEmployeeId() {
