@@ -25,6 +25,14 @@ public class Database {
         return result;
     }
 
+    public List<Employee> searchByPhoneNumber(String phoneNumber) {
+        List<Employee> result = new ArrayList<>();
+        if (employees.containsKey(phoneNumber)) {
+            result.add(employees.get(phoneNumber));
+        }
+        return result;
+    }
+
     public List<Employee> searchByName(String search) {
         List<Employee> matchingEmployees = new ArrayList<>();
         String temp = search.toLowerCase();
