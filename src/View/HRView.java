@@ -22,6 +22,8 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
     ButtonGroup buttonGroup;
     JRadioButton radioButtonName;
     JRadioButton radioButtonID;
+    JRadioButton radioButtonEmail;
+    JRadioButton radioButtonPhone;
     JLabel filterLabel;
     JComboBox<String> filterComboBox;
 
@@ -58,6 +60,8 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         buttonGroup  = new ButtonGroup();
         radioButtonName = new JRadioButton("Name");
         radioButtonID = new JRadioButton("ID");
+        radioButtonEmail = new JRadioButton("Email");
+        radioButtonPhone = new JRadioButton("Phone");
         filterLabel = new JLabel("Filter      ", SwingConstants.RIGHT);
         filterComboBox = new JComboBox<>(new String[]{"None", "Developer", "Manager", "HR", "Product Owner"});
 
@@ -98,9 +102,13 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         radioButtonName.setSelected(true);
         buttonGroup.add(radioButtonName);
         buttonGroup.add(radioButtonID);
-        radioButtonPanel.setLayout(new GridLayout(2, 1));
+        buttonGroup.add(radioButtonEmail);
+        buttonGroup.add(radioButtonPhone);
+        radioButtonPanel.setLayout(new GridLayout(2, 2));
         radioButtonPanel.add(radioButtonName);
         radioButtonPanel.add(radioButtonID);
+        radioButtonPanel.add(radioButtonEmail);
+        radioButtonPanel.add(radioButtonPhone);
 
         topPanel.setLayout(new GridLayout(1,5));
         topPanel.add(searchLabel);
