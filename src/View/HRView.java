@@ -70,8 +70,8 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         searchResultPanel = new JPanel();
         searchResultTableModel = new DefaultTableModel();
         searchResultTable = new JTable(searchResultTableModel);
-        searchResultTableModel.addColumn("Name");
         searchResultTableModel.addColumn("ID");
+        searchResultTableModel.addColumn("Name");
         searchResultTableModel.addColumn("Position");
 
 
@@ -80,12 +80,12 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         showDetailsTopPanel = new JPanel();
         showDetailsButton = new JButton("Show Details");
         showDetailsCenterPanel = new JPanel();
-        showDetailsNameTextField = new JTextField("Jane Doe");
-        showDetailsEmploymentPercentageTextField = new JTextField("100%");
-        showDetailsPositionTextField = new JTextField("Manager");
-        showDetailsEmailTextField = new JTextField("jane@doe.com");
-        showDetailsSalaryTextField = new JTextField("53 000");
-        showDetailsPhoneTextField = new JTextField("09-12 55 12");
+        showDetailsNameTextField = new JTextField();
+        showDetailsEmploymentPercentageTextField = new JTextField();
+        showDetailsPositionTextField = new JTextField();
+        showDetailsEmailTextField = new JTextField();
+        showDetailsSalaryTextField = new JTextField();
+        showDetailsPhoneTextField = new JTextField();
     }
 
     public void init() {
