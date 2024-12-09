@@ -152,7 +152,7 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         frame.revalidate();
     }
 
-    public void addEmployeeRow(Employee employee) {
+    private void addEmployeeRow(Employee employee) {
         searchResultTableModel.addRow(new String[]{String.valueOf(employee.getEmployeeId()), employee.getName(), employee.getPosition().name()});
     }
 
@@ -166,8 +166,19 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         model.setSearchResultByName("");
     }
 
+    private void fillFieldsWithDetails(Employee employee){
+        showDetailsNameTextField.setText(employee.getName());
+        showDetailsEmploymentPercentageTextField.setText(String.valueOf(employee.getWorkingPercentage()));
+        showDetailsPositionTextField.setText(employee.getPosition().name());
+        showDetailsEmailTextField.setText(employee.getEmail());
+        showDetailsSalaryTextField.setText(String.valueOf(employee.getSalary()));
+        showDetailsPhoneTextField.setText(employee.getPhoneNumber());
+    }
+
     @Override
     public void updateEmployeeDetails() {
+        Employee employee = model.getSelectedEmployee();
+        fillFieldsWithDetails(employee);
     }
 
     @Override
@@ -183,6 +194,10 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
 
     }
 
+    public void clearTable() {
+        searchResultTableModel.setRowCount(0);
+    }
+
     public JTextField getSearchField() {
         return searchField;
     }
@@ -193,5 +208,17 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
 
     public JRadioButton getRadioButtonID() {
         return radioButtonID;
+    }
+
+    public JButton getShowDetailsButton() {
+        return showDetailsButton;
+    }
+
+    public JTable getSearchResultTable() {
+        return searchResultTable;
+    }
+
+    public DefaultTableModel getSearchResultTableModel() {
+        return searchResultTableModel;
     }
 }

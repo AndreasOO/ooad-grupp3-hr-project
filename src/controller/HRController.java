@@ -19,12 +19,24 @@ public class HRController {
 
     public void addActionListeners(){
         view.getSearchField().addActionListener(e->{
+            view.clearTable();
             String searchTerm = view.getSearchField().getText();
             if (view.getRadioButtonName().isSelected()){
                 model.setSearchResultByName(searchTerm);
             } else if (view.getRadioButtonID().isSelected()) {
                 model.setSearchResultById(Long.parseLong(searchTerm));
             }
+        });
+
+        view.getShowDetailsButton().addActionListener(e->{
+            int selectedRow = view.getSearchResultTable().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Select an employee to view details");
+                return;
+            }
+            long id = Long.parseLong(view.getSearchResultTable().getValueAt(selectedRow, 0).toString());
+            model.selectEmployee(id);
+            view.updateEmployeeDetails();
         });
 
     }
