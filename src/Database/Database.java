@@ -35,6 +35,18 @@ public class Database {
         return result;
     }
 
+    public List<Employee> searchByEmail(String email) {
+        List<Employee> matchingEmployees = new ArrayList<>();
+        String temp = email.toLowerCase();
+        for (Employee employee : employees.values()) {
+            if (employee.getEmail().toLowerCase().contains(temp.trim())) {
+
+                matchingEmployees.add(employee);
+            }
+        }
+        return matchingEmployees;
+    }
+
     public List<Employee> searchByName(String search) {
         List<Employee> matchingEmployees = new ArrayList<>();
         String temp = search.toLowerCase();
