@@ -1,9 +1,11 @@
 package controller;
 
+import Database.Position;
 import Model.HRModel;
 import View.HRView;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class HRController {
 
@@ -43,6 +45,14 @@ public class HRController {
             view.updateEmployeeDetails();
         });
 
+        view.getFilterComboBox().addActionListener(e->{
+            if (view.getFilterComboBox().getSelectedIndex() == -1) {
+                JOptionPane.showMessageDialog(null, "Select an employee to view filter");
+                return;
+            }
+            String position = Objects.requireNonNull(view.getFilterComboBox().getSelectedItem()).toString();
+            model.filterSearchResultByPosition(position);
+        });
     }
 
 
