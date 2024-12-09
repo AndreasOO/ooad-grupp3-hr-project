@@ -26,7 +26,11 @@ public class HRController {
             if (view.getRadioButtonName().isSelected()){
                 model.setSearchResultByName(searchTerm);
             } else if (view.getRadioButtonID().isSelected()) {
-                model.setSearchResultById(Long.parseLong(searchTerm));
+                try{
+                    model.setSearchResultById(Long.parseLong(searchTerm));
+                } catch (NumberFormatException ex) {
+                    System.out.println("Exception caught, program continues");
+                }
             }
         });
 

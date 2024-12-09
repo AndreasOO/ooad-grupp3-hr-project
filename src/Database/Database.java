@@ -25,6 +25,28 @@ public class Database {
         return result;
     }
 
+    public List<Employee> searchByPhoneNumber(String phoneNumber) {
+        List<Employee> result = new ArrayList<>();
+        for (Employee employee : employees.values()) {
+            if (employee.getPhoneNumber().contains(phoneNumber.trim())) {
+                result.add(employee);
+            }
+        }
+        return result;
+    }
+
+    public List<Employee> searchByEmail(String email) {
+        List<Employee> matchingEmployees = new ArrayList<>();
+        String temp = email.toLowerCase();
+        for (Employee employee : employees.values()) {
+            if (employee.getEmail().toLowerCase().contains(temp.trim())) {
+
+                matchingEmployees.add(employee);
+            }
+        }
+        return matchingEmployees;
+    }
+
     public List<Employee> searchByName(String search) {
         List<Employee> matchingEmployees = new ArrayList<>();
         String temp = search.toLowerCase();
