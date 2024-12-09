@@ -210,6 +210,15 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
         return radioButtonID;
     }
 
+
+    public JRadioButton getRadioButtonEmail() {
+        return radioButtonEmail;
+    }
+
+    public JRadioButton getRadioButtonPhone() {
+        return radioButtonPhone;
+    }
+
     public JButton getShowDetailsButton() {
         return showDetailsButton;
     }
