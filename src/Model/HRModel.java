@@ -81,6 +81,16 @@ public class HRModel {
         notifySearchObservers();
     }
 
+    public void setSearchResultByEmail(String email){
+        currentSearchResult = employeeDatabase.searchByEmail(email);
+        notifySearchObservers();
+    }
+
+    public void setSearchResultByPhone(String phone){
+        currentSearchResult = employeeDatabase.searchByPhoneNumber(phone);
+        notifySearchObservers();
+    }
+
     public void filterSearchResultByPosition(String position) {
         List<Employee> filteredList = new ArrayList<>();
         if (position.equals("None")) {
@@ -96,7 +106,6 @@ public class HRModel {
         }
         notifyPositionSearchObservers();
     }
-
     public void selectEmployee(long id) {
         List<Employee> foundEmployees = employeeDatabase.searchByID(id);
         if (foundEmployees != null) {

@@ -25,7 +25,14 @@ public class HRController {
             String searchTerm = view.getSearchField().getText();
             if (view.getRadioButtonName().isSelected()){
                 model.setSearchResultByName(searchTerm);
-            } else if (view.getRadioButtonID().isSelected()) {
+            }
+            else if (view.getRadioButtonEmail().isSelected()){
+                model.setSearchResultByEmail(searchTerm);
+            }
+            else if (view.getRadioButtonPhone().isSelected()){
+                model.setSearchResultByPhone(searchTerm);
+            }
+            else if (view.getRadioButtonID().isSelected()) {
                 try{
                     model.setSearchResultById(Long.parseLong(searchTerm));
                 } catch (NumberFormatException ex) {
