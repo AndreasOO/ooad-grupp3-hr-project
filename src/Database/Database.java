@@ -27,8 +27,10 @@ public class Database {
 
     public List<Employee> searchByPhoneNumber(String phoneNumber) {
         List<Employee> result = new ArrayList<>();
-        if (employees.containsKey(phoneNumber)) {
-            result.add(employees.get(phoneNumber));
+        for (Employee employee : employees.values()) {
+            if (employee.getPhoneNumber().contains(phoneNumber.trim())) {
+                result.add(employee);
+            }
         }
         return result;
     }
