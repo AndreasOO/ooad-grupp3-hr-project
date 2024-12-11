@@ -182,7 +182,7 @@ public class HRView implements EmployeeDetailsObserver, SearchResultObserver, Fi
     private void fillFieldsWithDetails(Employee employee){
         showDetailsNameTextField.setText(employee.getName());
         showDetailsEmploymentPercentageTextField.setText(String.valueOf(employee.getWorkingPercentage()));
-        showDetailsPositionTextField.setText(employee.getPosition().name());
+        showDetailsPositionTextField.setText(employee.getPosition().getPosition());
         showDetailsEmailTextField.setText(employee.getEmail());
         showDetailsSalaryTextField.setText(String.valueOf(employee.getSalary()));
         showDetailsPhoneTextField.setText(employee.getPhoneNumber());
