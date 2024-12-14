@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Database {
 
-    HashMap<Long, Employee> employees = new HashMap<>();
+    private final HashMap<Long, Employee> employees = new HashMap<>();
 
     public Database() {
         LoadData dataLoader = new LoadData();

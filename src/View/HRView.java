@@ -13,39 +13,39 @@ import javax.swing.table.DefaultTableModel;
 
 public class HRView implements EmployeeDetailsObserver, SearchResultObserver, FilterPositionObserver {
 
-    JFrame frame;
-    JPanel mainPanel;
+    private final JFrame frame;
+    private final JPanel mainPanel;
 
-    JPanel topPanel;
-    JLabel searchLabel;
-    JTextField searchField;
-    JPanel radioButtonPanel;
-    ButtonGroup buttonGroup;
-    JRadioButton radioButtonName;
-    JRadioButton radioButtonID;
-    JRadioButton radioButtonEmail;
-    JRadioButton radioButtonPhone;
-    JLabel filterLabel;
-    JComboBox<String> filterComboBox;
+    private final JPanel topPanel;
+    private final JLabel searchLabel;
+    private final JTextField searchField;
+    private final JPanel radioButtonPanel;
+    private final ButtonGroup buttonGroup;
+    private final JRadioButton radioButtonName;
+    private final JRadioButton radioButtonID;
+    private final JRadioButton radioButtonEmail;
+    private final JRadioButton radioButtonPhone;
+    private final JLabel filterLabel;
+    private JComboBox<String> filterComboBox;
 
-    JPanel centerPanel;
-    JPanel searchResultPanel;
-    JTable searchResultTable;
-    DefaultTableModel searchResultTableModel;
-    JScrollPane searchResultScrollPane;
+    private final JPanel centerPanel;
+    private final JPanel searchResultPanel;
+    private final JTable searchResultTable;
+    private final DefaultTableModel searchResultTableModel;
+    private final JScrollPane searchResultScrollPane;
 
-    JPanel showDetailsMainPanel;
-    JPanel showDetailsTopPanel;
-    JButton showDetailsButton;
-    JPanel showDetailsCenterPanel;
-    JTextField showDetailsNameTextField;
-    JTextField showDetailsEmploymentPercentageTextField;
-    JTextField showDetailsPositionTextField;
-    JTextField showDetailsEmailTextField;
-    JTextField showDetailsSalaryTextField;
-    JTextField showDetailsPhoneTextField;
+    private final JPanel showDetailsMainPanel;
+    private final JPanel showDetailsTopPanel;
+    private final JButton showDetailsButton;
+    private final JPanel showDetailsCenterPanel;
+    private final JTextField showDetailsNameTextField;
+    private final JTextField showDetailsEmploymentPercentageTextField;
+    private final JTextField showDetailsPositionTextField;
+    private final JTextField showDetailsEmailTextField;
+    private final JTextField showDetailsSalaryTextField;
+    private final JTextField showDetailsPhoneTextField;
 
-    HRModel model;
+    private final HRModel model;
 
     public HRView(HRModel model) {
         this.model = model;

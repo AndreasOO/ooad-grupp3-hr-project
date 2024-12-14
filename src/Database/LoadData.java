@@ -6,7 +6,7 @@ import java.util.List;
 
 public class LoadData {
 
-    List<Employee> employees;
+    private final List<Employee> employees;
 
     LoadData() {
 

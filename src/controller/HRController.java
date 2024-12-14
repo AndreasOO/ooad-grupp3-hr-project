@@ -9,8 +9,8 @@ import java.util.Objects;
 
 public class HRController {
 
-    private HRView view;
-    private HRModel model;
+    private final HRView view;
+    private final HRModel model;
 
     public HRController(HRModel model) {
         this.model = model;
